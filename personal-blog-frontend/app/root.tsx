@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { ThemeContextProvider, useTheme } from "./context/themeContext";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,6 +24,17 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+function LayoutBody({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme();
+  return (
+    <body data-theme={theme}>
+      {children}
+      <ScrollRestoration />
+      <Scripts />
+    </body>
+  );
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -32,11 +44,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+      <ThemeContextProvider>
+        <LayoutBody>{children}</LayoutBody>
+      </ThemeContextProvider>
     </html>
   );
 }
