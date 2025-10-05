@@ -3,64 +3,93 @@ import iconMoon from "../../public/assets/images/icon-moon.svg";
 import iconSun from "../../public/assets/images/icon-sun.svg";
 import iconMenu from "../../public/assets/images/icon-menu.svg";
 import iconMenuClose from "../../public/assets/images/icon-menu-close.svg";
-import { NavLink } from "react-router";
+import iconMenuDark from "../../public/assets/images/icon-menu-dark.svg";
+import iconMenuCloseDark from "../../public/assets/images/icon-menu-close-dark.svg";
+
+import { NavLink, Link } from "react-router";
 import { useState } from "react";
 import { useTheme } from "~/context/themeContext";
 
 type IsMobile = true | false;
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState<IsMobile>(false);
+  const [toggleMobileNav, setToggleMobileNav] = useState<IsMobile>(false);
   const { theme, setTheme } = useTheme();
+
+  function setMobileMenu() {
+    if (theme === "light" && toggleMobileNav === false) {
+      return iconMenu;
+    } else if (theme === "light" && toggleMobileNav === true) {
+      return iconMenuClose;
+    } else if (theme === "dark" && toggleMobileNav === false) {
+      return iconMenuDark;
+    } else if (theme === "dark" && toggleMobileNav === true) {
+      return iconMenuCloseDark;
+    }
+  }
   return (
     <nav>
-      <div className="dark:bg-neutral-800 bg-neutral-200 flex flex-wrap justify-between px-2 py-1.5 rounded-xl">
-        <img
-          className="rounded-xl w-10 h-10 object-cover"
-          src={avatarImage}
-          alt="women with blond hair"
-        />
+      <div className="bg-neutral-0 flex flex-wrap justify-between rounded-xl px-2 py-1.5 shadow-md dark:bg-neutral-800">
+        <Link to="/home">
+          <img
+            className="h-10 w-10 rounded-xl object-cover"
+            src={avatarImage}
+            alt="women with blond hair"
+          />
+        </Link>
+
         <div className="flex items-center gap-2">
           <div className="flex">
-            <div className="hidden gap-5 flex-wrap items-center md:flex text-neutral-700 dark:text-neutral-100">
+            {/* Desktop navbar */}
+            <div className="hidden flex-wrap items-center gap-5 text-neutral-700 md:flex dark:text-neutral-100">
               <NavLink
                 to="/home"
-                className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+                className={({ isActive }) =>
+                  isActive ? "border-b-3 border-blue-400" : ""
+                }
               >
                 Home
               </NavLink>
               <NavLink
                 to="/blog"
-                className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+                className={({ isActive }) =>
+                  isActive ? "border-b-3 border-blue-400" : ""
+                }
               >
                 Blog
               </NavLink>
               <NavLink
                 to="/about"
-                className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+                className={({ isActive }) =>
+                  isActive ? "border-b-3 border-blue-400" : ""
+                }
               >
                 About
               </NavLink>
               <NavLink
                 to="/newsletter"
-                className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+                className={({ isActive }) =>
+                  isActive ? "border-b-3 border-blue-400" : ""
+                }
               >
                 Newsletter
               </NavLink>
             </div>
 
             <button
-              onClick={() => setIsMobile(!isMobile)}
-              className="hover:cursor-pointer p-2 sm:hidden"
+              onClick={() => setToggleMobileNav(!toggleMobileNav)}
+              className={`p-2 hover:cursor-pointer sm:hidden ${theme === "light" ? toggleMobileNav && "bg-neutral-700" : toggleMobileNav && "bg-neutral-200"} rounded-lg`}
             >
-              <img src={isMobile ? iconMenuClose : iconMenu} alt="" />
+              <img src={setMobileMenu()} />
             </button>
           </div>
           <button
             onClick={() =>
-              setTheme((value) => (value === "light" ? "dark" : "light"))
+              setTheme((previousTheme: string) =>
+                previousTheme === "light" ? "dark" : "light",
+              )
             }
-            className="hover:cursor-pointer p-2 border-1 border-neutral-700 rounded-xl bg-transparent"
+            className="rounded-lg border-1 border-neutral-700 bg-transparent p-2 hover:cursor-pointer"
           >
             <img
               src={theme === "light" ? iconMoon : iconSun}
@@ -71,29 +100,37 @@ const Navbar = () => {
         </div>
       </div>
 
-      {isMobile && (
-        <div className="bg-neutral-200 dark:bg-neutral-800  text-neutral-700 dark:text-neutral-100 rounded-xl p-2 flex flex-col mt-2 [&>*]:not-last:pb-1   [&>*]:not-last:border-b-1 [&>*]:not-last:border-b-violet-500 ">
+      {toggleMobileNav && (
+        <div className="bg-neutral-0 mt-2 flex flex-col gap-2 rounded-xl p-2 text-neutral-700 shadow-md sm:hidden dark:bg-neutral-800 dark:text-neutral-100 [&>*]:not-last:border-b-1 [&>*]:not-last:border-b-neutral-200 [&>*]:not-last:pb-1 dark:[&>*]:not-last:border-b-neutral-500">
           <NavLink
             to="/home"
-            className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+            className={({ isActive }) =>
+              isActive ? "font-semibold" : "font-normal"
+            }
           >
             Home
           </NavLink>
           <NavLink
             to="/blog"
-            className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+            className={({ isActive }) =>
+              isActive ? "font-semibold" : "font-normal"
+            }
           >
             Blog
           </NavLink>
           <NavLink
             to="/about"
-            className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+            className={({ isActive }) =>
+              isActive ? "font-semibold" : "font-normal"
+            }
           >
             About
           </NavLink>
           <NavLink
             to="/newsletter"
-            className={({ isActive }) => (isActive ? "bg-blue-500" : "")}
+            className={({ isActive }) =>
+              isActive ? "font-semibold" : "font-normal"
+            }
           >
             Newsletter
           </NavLink>
