@@ -29,7 +29,7 @@ const Navbar = () => {
   }
   return (
     <nav>
-      <div className="bg-neutral-0 flex flex-wrap justify-between rounded-xl px-2 py-1.5 shadow-md dark:bg-neutral-800">
+      <div className="flex flex-wrap justify-between rounded-xl px-2 py-1.5 shadow-md">
         <Link to="/home">
           <img
             className="h-10 w-10 rounded-xl object-cover"

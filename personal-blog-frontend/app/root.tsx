@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { ThemeContextProvider, useTheme } from "./context/themeContext";
 
 export const links: Route.LinksFunction = () => [
@@ -28,10 +29,14 @@ export const links: Route.LinksFunction = () => [
 function LayoutBody({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   return (
-    <body data-theme={theme}>
+    <body
+      className={theme === "light" ? "bg-neutral-100" : "bg-neutral-800"}
+      data-theme={theme}
+    >
       <Navbar />
       {children}
       <ScrollRestoration />
+      <Footer />
       <Scripts />
     </body>
   );
