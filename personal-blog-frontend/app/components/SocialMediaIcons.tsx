@@ -56,9 +56,7 @@ type SocialMediaIconsProps = {
 };
 
 const SocialMediaIcons = ({ iconBackground }: SocialMediaIconsProps) => {
-  3;
   const { theme } = useTheme();
-  console.log(theme === "light");
   return (
     <div className="flex gap-3">
       {socialMediaIcons.map((icon) => (

@@ -1,1 +1,0 @@
-# frontend-mentor-personal-blog
