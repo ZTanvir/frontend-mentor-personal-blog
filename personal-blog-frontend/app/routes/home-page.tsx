@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import Navbar from "~/components/Navbar";
+import About from "~/components/About";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,7 +12,9 @@ export function meta({}: Route.MetaArgs) {
 export default function HomePage() {
   return (
     <>
-      <h1>Personal</h1>
+      <main>
+        <About userName="Paulina" />
+      </main>
     </>
   );
 }

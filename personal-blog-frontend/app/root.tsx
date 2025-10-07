@@ -30,14 +30,14 @@ function LayoutBody({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   return (
     <body
-      className={theme === "light" ? "bg-neutral-100" : "bg-neutral-800"}
+      className={` ${theme === "light" ? "bg-neutral-100" : "bg-neutral-800"}`}
       data-theme={theme}
     >
       <Navbar />
       {children}
       <ScrollRestoration />
-      <Footer />
       <Scripts />
+      <Footer />
     </body>
   );
 }
