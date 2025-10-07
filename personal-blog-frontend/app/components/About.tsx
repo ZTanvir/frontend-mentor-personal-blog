@@ -6,7 +6,7 @@ type AboutProps = {
 const About = ({ userName = "Paulina" }: AboutProps) => {
   return (
     <section>
-      <h1 className="mb-4 inline-block border-b-4 border-blue-400 text-4xl text-neutral-700 dark:text-neutral-50">
+      <h1 className="mb-4 inline-block border-b-4 border-blue-400 text-4xl font-bold text-neutral-700 dark:text-neutral-50">
         Hi, I’m {userName} 👋
       </h1>
       <p className="mb-4 text-lg text-neutral-600 dark:text-neutral-400">
