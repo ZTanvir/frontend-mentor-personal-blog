@@ -1,4 +1,4 @@
-import type { Route } from "../+types/root";
+import type { Route } from "../../+types/root";
 import { Link } from "react-router";
 import type { Post } from "types";
 import BlogPost from "~/components/Post";
@@ -16,7 +16,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const posts = loaderData;
   return (
     <main>
-      <h1 className="text-3xl font-bold text-neutral-700 dark:text-neutral-50">
+      <h1 className="mb-4 text-3xl font-bold text-neutral-700 dark:text-neutral-50">
         My Articles
         <span className="ml-2 inline-block min-w-14 border-b-3 border-b-blue-400"></span>
       </h1>

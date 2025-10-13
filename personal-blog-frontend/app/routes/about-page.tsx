@@ -57,7 +57,7 @@ const AboutPage = () => {
   return (
     <main className="mb-auto">
       <section>
-        <h1 className="inline-block border-b-4 border-blue-400 text-4xl font-bold text-neutral-700 dark:text-neutral-50">
+        <h1 className="mb-4 inline-block border-b-4 border-blue-400 text-4xl font-bold text-neutral-700 dark:text-neutral-50">
           About Me
         </h1>
         {aboutMeData.map((item) => (
