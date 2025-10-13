@@ -33,11 +33,12 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
       </p>
       <hr className="mx-3 my-6 text-neutral-200 dark:text-neutral-700" />
       <div>
-        {posts.map((post: Post) => (
-          <Link to={`/blog/${post.slug}`} key={post.id}>
-            <BlogPost post={post} />
-          </Link>
-        ))}
+        {posts &&
+          posts.map((post: Post) => (
+            <Link to={`/blog/${post.slug}`} key={post.id}>
+              <BlogPost post={post} />
+            </Link>
+          ))}
       </div>
     </main>
   );

@@ -27,17 +27,9 @@ const BlogDetails = ({ loaderData }: Route.ComponentProps) => {
   return (
     <main>
       {postData && (
-        <section>
-          <h1 className="text-3xl font-bold text-neutral-700 dark:text-neutral-50">
-            {postData.title}
-          </h1>
-          <p className="my-1 text-neutral-600 dark:text-neutral-400">
-            {new Date(postData.date).toDateString()}
-          </p>
-          <article className="prose dark:prose-invert">
-            <Markdown>{postData.content}</Markdown>
-          </article>
-        </section>
+        <article className="prose prose-headings:text-neutral-700 prose-headings:dark:text-neutral-50 dark:prose-invert">
+          <Markdown>{postData.content}</Markdown>
+        </article>
       )}
     </main>
   );
