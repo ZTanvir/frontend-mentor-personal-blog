@@ -3,6 +3,13 @@ import { Form } from "react-router";
 import checkCircleIcon from "../../public/assets/images/check-circle.svg";
 import iconError from "../../public/assets/images/icon-error.svg";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Zahirul Blog" },
+    { name: "description", content: "Welcome to my blog!" },
+  ];
+}
+
 export async function clientAction({ request }: Route.ClientActionArgs) {
   let formData = await request.formData();
   let email = formData.get("email") as string;

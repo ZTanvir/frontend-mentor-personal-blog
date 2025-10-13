@@ -3,6 +3,13 @@ import { Link } from "react-router";
 import type { Post } from "types";
 import BlogPost from "~/components/Post";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Zahirul Blog" },
+    { name: "description", content: "Welcome to my blog!" },
+  ];
+}
+
 export async function loader({ params }: Route.LoaderArgs) {
   const res = await fetch("http://localhost:1337/api/posts");
   if (!res.ok) {

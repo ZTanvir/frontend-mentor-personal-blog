@@ -2,6 +2,13 @@ import type { Route } from "../../+types/root";
 import type { Post } from "types";
 import Markdown from "react-markdown";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Zahirul Blog" },
+    { name: "description", content: "Welcome to my blog!" },
+  ];
+}
+
 // provides `loaderData` to the component
 export async function loader({ params }: Route.LoaderArgs) {
   const { slug } = params;

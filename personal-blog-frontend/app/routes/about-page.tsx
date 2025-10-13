@@ -1,6 +1,7 @@
 import SocialMediaIcons from "~/components/SocialMediaIcons";
 import imageWorkspaceLarge from "../../public/assets/images/image-workspace-large.jpg";
 import imageWorkspaceSmall from "../../public/assets/images/image-workspace-small.jpg";
+import type { Route } from "../+types/root";
 
 const aboutMeData = [
   {
@@ -52,6 +53,13 @@ const bookList = [
     details: `by Tara Westover (for incredible inspiration)`,
   },
 ];
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Zahirul Blog" },
+    { name: "description", content: "Welcome to my blog!" },
+  ];
+}
 
 const AboutPage = () => {
   return (
