@@ -1,7 +1,6 @@
 import SocialMediaIcons from "~/components/SocialMediaIcons";
 import imageWorkspaceLarge from "../../public/assets/images/image-workspace-large.jpg";
 import imageWorkspaceSmall from "../../public/assets/images/image-workspace-small.jpg";
-import { useEffect, useRef, useState } from "react";
 
 const aboutMeData = [
   {
@@ -56,9 +55,9 @@ const bookList = [
 
 const AboutPage = () => {
   return (
-    <main>
+    <main className="mb-auto">
       <section>
-        <h1 className="mb-4 inline-block border-b-4 border-blue-400 text-4xl font-bold text-neutral-700 dark:text-neutral-50">
+        <h1 className="inline-block border-b-4 border-blue-400 text-4xl font-bold text-neutral-700 dark:text-neutral-50">
           About Me
         </h1>
         {aboutMeData.map((item) => (

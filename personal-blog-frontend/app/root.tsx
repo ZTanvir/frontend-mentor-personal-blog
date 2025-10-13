@@ -30,7 +30,7 @@ function LayoutBody({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   return (
     <body
-      className={` ${theme === "light" ? "bg-neutral-100" : "bg-neutral-800"}`}
+      className={`grid h-full grid-rows-[auto_1fr_auto] ${theme === "light" ? "bg-neutral-100" : "bg-neutral-800"}`}
       data-theme={theme}
     >
       <Navbar />
@@ -44,7 +44,7 @@ function LayoutBody({ children }: { children: React.ReactNode }) {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
